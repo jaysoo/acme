@@ -1,94 +1,56 @@
+# Demo of using Nx + Next.js + Vercel
+
+This repo is a demo of how to develop Next.js apps in Nx, and use the affected logic in Vercel deployments.
+
+There are two apps in this repo: `apps/demo` and `apps/hello-world`. You can run the apps as follows locally.
+
+```bash
+yarn
+
+npx nx serve demo
+npx nx serve hello-world
+```
+
+Then, in Vercel there are two projects in the same GitHub monorepo: `acme-demo` and `acme-hello-world`.
+
+For the `acme-demo` app, these are the settings used.
+
+**General Settings**
+
+![](./vercel-app-settings.png)
+
+**Git Settings**
+
+![](./vercel-app-settings-2.png)
+
+The same settings are applied to `acme-hello-world`, but `demo` is replaced with `hello-world` in the build command and output directoy.
+
+## How it works
+
+The ignore build script installs both `gh` and `nx` CLI tools to find our _base_ and _head_ git refs, and then figure out if our app is affected.
+
+See [./tools/scripts/ignore-build.sh](tools/scripts/ignore-build.sh) shell script for the implementation.
+
+## Why?
+
+Nx can tell us which apps are affected in the branch by looking at the changed files, and finding the apps that have dependencies to those files.
+
+For example,
+
+```
+npx nx affected:apps --base main --head HEAD
+```
+
+The above command will compare our current `HEAD` ref to `main`, and list out all the apps affected by the change.
+
+Nx affected logic allows us to:
+
+1. Skip deployments for apps that are not affected
+2. Continue to build if one of the dependencies of the apps have changed (including npm packages)
+
+Point #2 is important because only apps using the changed workspace libs or npm packages should be deployed. This is not easy to do without using Nx.
 
 
-# Acme
+Nx uses the project graph (seen below) to figure out what is affected.
 
-This project was generated using [Nx](https://nx.dev).
-
-<p style="text-align: center;"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="450"></p>
-
-🔎 **Powerful, Extensible Dev Tools**
-
-## Adding capabilities to your workspace
-
-Nx supports many plugins which add capabilities for developing different types of applications and different tools.
-
-These capabilities include generating applications, libraries, etc as well as the devtools to test, and build projects as well.
-
-Below are our core plugins:
-
-- [React](https://reactjs.org)
-  - `npm install --save-dev @nrwl/react`
-- Web (no framework frontends)
-  - `npm install --save-dev @nrwl/web`
-- [Angular](https://angular.io)
-  - `npm install --save-dev @nrwl/angular`
-- [Nest](https://nestjs.com)
-  - `npm install --save-dev @nrwl/nest`
-- [Express](https://expressjs.com)
-  - `npm install --save-dev @nrwl/express`
-- [Node](https://nodejs.org)
-  - `npm install --save-dev @nrwl/node`
-
-There are also many [community plugins](https://nx.dev/nx-community) you could add.
-
-## Generate an application
-
-Run `nx g @nrwl/react:app my-app` to generate an application.
-
-> You can use any of the plugins above to generate applications as well.
-
-When using Nx, you can create multiple applications and libraries in the same workspace.
-
-## Generate a library
-
-Run `nx g @nrwl/react:lib my-lib` to generate a library.
-
-> You can also use any of the plugins above to generate libraries as well.
-
-Libraries are shareable across libraries and applications. They can be imported from `@acme/mylib`.
-
-## Development server
-
-Run `nx serve my-app` for a dev server. Navigate to http://localhost:4200/. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `nx g @nrwl/react:component my-component --project=my-app` to generate a new component.
-
-## Build
-
-Run `nx build my-app` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `nx test my-app` to execute the unit tests via [Jest](https://jestjs.io).
-
-Run `nx affected:test` to execute the unit tests affected by a change.
-
-## Running end-to-end tests
-
-Run `ng e2e my-app` to execute the end-to-end tests via [Cypress](https://www.cypress.io).
-
-Run `nx affected:e2e` to execute the end-to-end tests affected by a change.
-
-## Understand your workspace
-
-Run `nx dep-graph` to see a diagram of the dependencies of your projects.
-
-## Further help
-
-Visit the [Nx Documentation](https://nx.dev) to learn more.
-
-
-
-## ☁ Nx Cloud
-
-### Computation Memoization in the Cloud
-
-<p style="text-align: center;"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-cloud-card.png"></p>
-
-Nx Cloud pairs with Nx in order to enable you to build and test code more rapidly, by up to 10 times. Even teams that are new to Nx can connect to Nx Cloud and start saving time instantly.
-
-Teams using Nx gain the advantage of building full-stack applications with their preferred framework alongside Nx’s advanced code generation and project dependency graph, plus a unified experience for both frontend and backend developers.
-
-Visit [Nx Cloud](https://nx.app/) to learn more.
+![](./dep-graph.png)
