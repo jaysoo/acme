@@ -1745,39 +1745,9 @@
     webpack-subresource-integrity "^1.5.1"
     worker-plugin "3.2.0"
 
-"@nrwl/workspace@12.0.8":
+"@nrwl/workspace@12.0.8", "@nrwl/workspace@^12.0.8":
   version "12.0.8"
   resolved "https://registry.yarnpkg.com/@nrwl/workspace/-/workspace-12.0.8.tgz#0853300bb5dec93975f8b2e0b9fa55f8a1c71a12"
-  integrity sha512-2MOlFMVctstTYNuZMf8wUrxIrV9B//D7TpaijbImZVK/8hm2vbamuZk48vwOz8qK/aTAPwtijyD7x0yx4Z14Yw==
-  dependencies:
-    "@nrwl/cli" "12.0.8"
-    "@nrwl/devkit" "12.0.8"
-    "@nrwl/jest" "12.0.8"
-    "@nrwl/linter" "12.0.8"
-    axios "0.21.1"
-    chalk "4.1.0"
-    cosmiconfig "^4.0.0"
-    dotenv "8.2.0"
-    enquirer "~2.3.6"
-    flat "^5.0.2"
-    fs-extra "7.0.1"
-    ignore "^5.0.4"
-    lodash.template "~4.5.0"
-    minimatch "3.0.4"
-    npm-run-all "^4.1.5"
-    open "^7.4.2"
-    resolve "1.17.0"
-    rxjs "^6.5.4"
-    semver "7.3.4"
-    strip-json-comments "^3.1.1"
-    tmp "~0.2.1"
-    tslib "^2.0.0"
-    yargs "15.4.1"
-    yargs-parser "20.0.0"
-
-"@nrwl/workspace@^12.0.8":
-  version "12.0.8"
-  resolved "http://localhost:4873/@nrwl%2fworkspace/-/workspace-12.0.8.tgz#0853300bb5dec93975f8b2e0b9fa55f8a1c71a12"
   integrity sha512-2MOlFMVctstTYNuZMf8wUrxIrV9B//D7TpaijbImZVK/8hm2vbamuZk48vwOz8qK/aTAPwtijyD7x0yx4Z14Yw==
   dependencies:
     "@nrwl/cli" "12.0.8"

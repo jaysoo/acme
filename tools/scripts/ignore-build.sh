@@ -11,14 +11,10 @@ REPO=acme
 APP=$1
 
 # Always disable deployment to production. We will manually promote specific builds to production.
+# Remove this if you want to always deploy to production from main branch.
 if [ $VERCEL_GIT_COMMIT_REF == "main" ]; then
-  if [[ $VERCEL_GIT_COMMIT_MESSAGE =~ /^Release/ ]]; then
-    echo ">>> ✅ - Build can proceed"
-    exit 1
-  else
-    echo ">>> 🛑 - Build cancelled"
-    exit 0
-  fi
+  echo ">>> 🛑 - Build cancelled (main branch requires manual promotion)"
+  exit 0
 fi
 
 # Adding origin so we can use `gh` and `nx affected` commands.
