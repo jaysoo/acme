@@ -1,13 +1,5 @@
 {
   "version": 2,
-  "cli": { "defaultCollection": "@nrwl/next" },
-  "defaultProject": "demo",
-  "generators": {
-    "@nrwl/react": { "application": { "babel": true } },
-    "@nrwl/next": {
-      "application": { "style": "styled-jsx", "linter": "eslint" }
-    }
-  },
   "projects": {
     "demo": {
       "root": "apps/demo",
@@ -17,12 +9,20 @@
         "build": {
           "executor": "@nrwl/next:build",
           "outputs": ["{options.outputPath}"],
-          "options": { "root": "apps/demo", "outputPath": "dist/apps/demo" },
-          "configurations": { "production": {} }
+          "options": {
+            "root": "apps/demo",
+            "outputPath": "dist/apps/demo"
+          },
+          "configurations": {
+            "production": {}
+          }
         },
         "serve": {
           "executor": "@nrwl/next:server",
-          "options": { "buildTarget": "demo:build", "dev": true },
+          "options": {
+            "buildTarget": "demo:build",
+            "dev": true
+          },
           "configurations": {
             "production": {
               "buildTarget": "demo:build:production",
@@ -32,7 +32,9 @@
         },
         "export": {
           "executor": "@nrwl/next:export",
-          "options": { "buildTarget": "demo:build:production" }
+          "options": {
+            "buildTarget": "demo:build:production"
+          }
         },
         "test": {
           "executor": "@nrwl/jest:jest",
@@ -44,9 +46,13 @@
         },
         "lint": {
           "executor": "@nrwl/linter:eslint",
-          "options": { "lintFilePatterns": ["apps/demo/**/*.{ts,tsx,js,jsx}"] }
+          "options": {
+            "lintFilePatterns": ["apps/demo/**/*.{ts,tsx,js,jsx}"]
+          },
+          "outputs": ["{options.outputFile}"]
         }
-      }
+      },
+      "tags": []
     },
     "demo-e2e": {
       "root": "apps/demo-e2e",
@@ -61,14 +67,21 @@
             "devServerTarget": "demo:serve"
           },
           "configurations": {
-            "production": { "devServerTarget": "demo:serve:production" }
+            "production": {
+              "devServerTarget": "demo:serve:production"
+            }
           }
         },
         "lint": {
           "executor": "@nrwl/linter:eslint",
-          "options": { "lintFilePatterns": ["apps/demo-e2e/**/*.{js,ts}"] }
+          "options": {
+            "lintFilePatterns": ["apps/demo-e2e/**/*.{js,ts}"]
+          },
+          "outputs": ["{options.outputFile}"]
         }
-      }
+      },
+      "tags": [],
+      "implicitDependencies": ["demo"]
     },
     "hello-world": {
       "root": "apps/hello-world",
@@ -82,11 +95,16 @@
             "root": "apps/hello-world",
             "outputPath": "dist/apps/hello-world"
           },
-          "configurations": { "production": {} }
+          "configurations": {
+            "production": {}
+          }
         },
         "serve": {
           "executor": "@nrwl/next:server",
-          "options": { "buildTarget": "hello-world:build", "dev": true },
+          "options": {
+            "buildTarget": "hello-world:build",
+            "dev": true
+          },
           "configurations": {
             "production": {
               "buildTarget": "hello-world:build:production",
@@ -96,7 +114,9 @@
         },
         "export": {
           "executor": "@nrwl/next:export",
-          "options": { "buildTarget": "hello-world:build:production" }
+          "options": {
+            "buildTarget": "hello-world:build:production"
+          }
         },
         "test": {
           "executor": "@nrwl/jest:jest",
@@ -110,9 +130,11 @@
           "executor": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": ["apps/hello-world/**/*.{ts,tsx,js,jsx}"]
-          }
+          },
+          "outputs": ["{options.outputFile}"]
         }
-      }
+      },
+      "tags": []
     },
     "hello-world-e2e": {
       "root": "apps/hello-world-e2e",
@@ -127,16 +149,21 @@
             "devServerTarget": "hello-world:serve"
           },
           "configurations": {
-            "production": { "devServerTarget": "hello-world:serve:production" }
+            "production": {
+              "devServerTarget": "hello-world:serve:production"
+            }
           }
         },
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": ["apps/hello-world-e2e/**/*.{js,ts}"]
-          }
+          },
+          "outputs": ["{options.outputFile}"]
         }
-      }
+      },
+      "tags": [],
+      "implicitDependencies": ["hello-world"]
     },
     "ui": {
       "root": "libs/ui",
@@ -154,13 +181,20 @@
             "external": ["react", "react-dom"],
             "rollupConfig": "@nrwl/react/plugins/bundle-rollup",
             "assets": [
-              { "glob": "libs/ui/README.md", "input": ".", "output": "." }
+              {
+                "glob": "libs/ui/README.md",
+                "input": ".",
+                "output": "."
+              }
             ]
           }
         },
         "lint": {
           "executor": "@nrwl/linter:eslint",
-          "options": { "lintFilePatterns": ["libs/ui/**/*.{ts,tsx,js,jsx}"] }
+          "options": {
+            "lintFilePatterns": ["libs/ui/**/*.{ts,tsx,js,jsx}"]
+          },
+          "outputs": ["{options.outputFile}"]
         },
         "test": {
           "executor": "@nrwl/jest:jest",
@@ -170,7 +204,8 @@
             "passWithNoTests": true
           }
         }
-      }
+      },
+      "tags": []
     }
   }
 }
