@@ -12,9 +12,15 @@
   "npmScope": "acme",
   "tasksRunnerOptions": {
     "default": {
-      "runner": "@nrwl/workspace/tasks-runners/default",
+      "runner": "@nrwl/nx-cloud",
       "options": {
-        "cacheableOperations": ["build", "lint", "test", "e2e"]
+        "cacheableOperations": [
+          "build",
+          "lint",
+          "test",
+          "e2e"
+        ],
+        "accessToken": "MDg2MGM5MTEtM2M2Zi00MTI5LWEwYjMtN2UzNTIxZTAyNDU4fHJlYWQtd3JpdGU="
       }
     }
   },
