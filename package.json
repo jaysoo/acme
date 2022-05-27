@@ -40,6 +40,7 @@
     "@babel/preset-env": "7.12.13",
     "@babel/preset-react": "7.12.13",
     "@babel/preset-typescript": "7.12.13",
+    "@manypkg/find-root": "^1.1.0",
     "@nrwl/cli": "14.1.4",
     "@nrwl/cypress": "14.1.4",
     "@nrwl/eslint-plugin-nx": "14.1.4",
@@ -75,4 +76,3 @@
     "typescript": "4.3.5"
   }
 }
-
