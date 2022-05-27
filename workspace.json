@@ -8,7 +8,9 @@
       "targets": {
         "build": {
           "executor": "@nrwl/next:build",
-          "outputs": ["{options.outputPath}"],
+          "outputs": [
+            "{options.outputPath}"
+          ],
           "options": {
             "root": "apps/demo",
             "outputPath": "dist/apps/demo"
@@ -38,7 +40,9 @@
         },
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/apps/demo"],
+          "outputs": [
+            "coverage/apps/demo"
+          ],
           "options": {
             "jestConfig": "apps/demo/jest.config.js",
             "passWithNoTests": true
@@ -47,9 +51,13 @@
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["apps/demo/**/*.{ts,tsx,js,jsx}"]
+            "lintFilePatterns": [
+              "apps/demo/**/*.{ts,tsx,js,jsx}"
+            ]
           },
-          "outputs": ["{options.outputFile}"]
+          "outputs": [
+            "{options.outputFile}"
+          ]
         }
       },
       "tags": []
@@ -75,13 +83,19 @@
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["apps/demo-e2e/**/*.{js,ts}"]
+            "lintFilePatterns": [
+              "apps/demo-e2e/**/*.{js,ts}"
+            ]
           },
-          "outputs": ["{options.outputFile}"]
+          "outputs": [
+            "{options.outputFile}"
+          ]
         }
       },
       "tags": [],
-      "implicitDependencies": ["demo"]
+      "implicitDependencies": [
+        "demo"
+      ]
     },
     "hello-world": {
       "root": "apps/hello-world",
@@ -90,7 +104,9 @@
       "targets": {
         "build": {
           "executor": "@nrwl/next:build",
-          "outputs": ["{options.outputPath}"],
+          "outputs": [
+            "{options.outputPath}"
+          ],
           "options": {
             "root": "apps/hello-world",
             "outputPath": "dist/apps/hello-world"
@@ -120,7 +136,9 @@
         },
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/apps/hello-world"],
+          "outputs": [
+            "coverage/apps/hello-world"
+          ],
           "options": {
             "jestConfig": "apps/hello-world/jest.config.js",
             "passWithNoTests": true
@@ -129,9 +147,13 @@
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["apps/hello-world/**/*.{ts,tsx,js,jsx}"]
+            "lintFilePatterns": [
+              "apps/hello-world/**/*.{ts,tsx,js,jsx}"
+            ]
           },
-          "outputs": ["{options.outputFile}"]
+          "outputs": [
+            "{options.outputFile}"
+          ]
         }
       },
       "tags": []
@@ -157,13 +179,19 @@
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["apps/hello-world-e2e/**/*.{js,ts}"]
+            "lintFilePatterns": [
+              "apps/hello-world-e2e/**/*.{js,ts}"
+            ]
           },
-          "outputs": ["{options.outputFile}"]
+          "outputs": [
+            "{options.outputFile}"
+          ]
         }
       },
       "tags": [],
-      "implicitDependencies": ["hello-world"]
+      "implicitDependencies": [
+        "hello-world"
+      ]
     },
     "ui": {
       "root": "libs/ui",
@@ -171,14 +199,19 @@
       "projectType": "library",
       "targets": {
         "build": {
-          "executor": "@nrwl/web:package",
-          "outputs": ["{options.outputPath}"],
+          "executor": "@nrwl/web:rollup",
+          "outputs": [
+            "{options.outputPath}"
+          ],
           "options": {
             "outputPath": "dist/libs/ui",
             "tsConfig": "libs/ui/tsconfig.lib.json",
             "project": "libs/ui/package.json",
             "entryFile": "libs/ui/src/index.ts",
-            "external": ["react", "react-dom"],
+            "external": [
+              "react",
+              "react-dom"
+            ],
             "rollupConfig": "@nrwl/react/plugins/bundle-rollup",
             "assets": [
               {
@@ -192,13 +225,19 @@
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["libs/ui/**/*.{ts,tsx,js,jsx}"]
+            "lintFilePatterns": [
+              "libs/ui/**/*.{ts,tsx,js,jsx}"
+            ]
           },
-          "outputs": ["{options.outputFile}"]
+          "outputs": [
+            "{options.outputFile}"
+          ]
         },
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/ui"],
+          "outputs": [
+            "coverage/libs/ui"
+          ],
           "options": {
             "jestConfig": "libs/ui/jest.config.js",
             "passWithNoTests": true
