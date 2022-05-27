@@ -30,10 +30,12 @@
     "core-js": "^3.6.5",
     "document-register-element": "1.13.1",
     "next": "12.1.5",
+    "nx": "14.1.4",
     "react": "18.1.0",
     "react-dom": "18.1.0",
     "regenerator-runtime": "0.13.7",
-    "tslib": "^2.0.0"
+    "tslib": "^2.0.0",
+    "typescript": "4.3.5"
   },
   "devDependencies": {
     "@babel/core": "7.12.13",
@@ -69,10 +71,9 @@
     "eslint-plugin-react": "7.29.4",
     "eslint-plugin-react-hooks": "4.5.0",
     "jest": "27.5.1",
+    "nx-ignore": "0.0.14",
     "prettier": "2.6.2",
     "ts-jest": "27.1.4",
-    "ts-node": "~9.1.1",
-    "typescript": "4.3.5"
+    "ts-node": "~9.1.1"
   }
 }
-
