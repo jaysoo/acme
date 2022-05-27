@@ -73,7 +73,6 @@
     "jest": "27.5.1",
     "prettier": "2.6.2",
     "ts-jest": "27.1.4",
-    "ts-node": "~9.1.1",
-    "nx-ignore": "1.0.0-beta.4"
+    "ts-node": "~9.1.1"
   }
 }
