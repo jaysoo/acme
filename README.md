@@ -1,4 +1,5 @@
 # Demo of using Nx + Next.js + Vercel
+*test*
 
 This repo is a demo of how to develop Next.js apps in Nx, and use the affected logic in Vercel deployments.
 
