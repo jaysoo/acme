@@ -1,10 +1,11 @@
+/* eslint-disable */
 module.exports = {
-  displayName: 'hello-world',
+  displayName: 'demo',
   preset: '../../jest.preset.js',
   transform: {
     '^(?!.*\\.(js|jsx|ts|tsx|css|json)$)': '@nrwl/react/plugins/jest',
     '^.+\\.[tj]sx?$': 'babel-jest',
   },
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
-  coverageDirectory: '../../coverage/apps/hello-world',
+  coverageDirectory: '../../coverage/apps/demo',
 };
